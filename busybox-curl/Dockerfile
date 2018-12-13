@@ -1,4 +1,4 @@
-FROM busybox
+FROM busybox:1.28
 
 WORKDIR /data
 
