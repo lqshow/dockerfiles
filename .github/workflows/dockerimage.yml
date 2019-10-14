@@ -14,7 +14,6 @@ jobs:
         submodules: true
     - name: CI Docker Login
       run: |
-        git submodule update --init --recursive 
         docker login docker.pkg.github.com -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
 
     - name: Build the Docker image（busybox-curl）
@@ -29,6 +28,7 @@ jobs:
         
     - name: Build the Docker image（igv-webapp）
       run: |
+        tree
         docker build . --file igv-webapp/Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
         docker push docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
 
