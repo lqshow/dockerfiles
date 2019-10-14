@@ -13,6 +13,11 @@ jobs:
     - name: CI Docker Login
       run: docker login docker.pkg.github.com -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
 
+    - name: Build the Docker image（busybox-curl）
+      run: |
+        docker build . --file busybox-curl/Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/busybox-curl:1.28
+        docker push docker.pkg.github.com/lqshow/dockerfiles/busybox-curl:1.28
+
     - name: Build the Docker image（docker-kubectl）
       run: |
         docker build . --file docker-kubectl/Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/docker-kubectl:latest
@@ -22,3 +27,4 @@ jobs:
       run: |
         docker build . --file igv-webapp/Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
         docker push docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
+
