@@ -1,5 +1,7 @@
 FROM node:10.16.3 AS build-env
 
+RUN git submodule update --init --recursive
+
 WORKDIR /app
 COPY resource/igv-webapp/package*.json ./
 RUN npm install
