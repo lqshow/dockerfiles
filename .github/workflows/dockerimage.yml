@@ -29,6 +29,7 @@ jobs:
     - name: Build the Docker image（igv-webapp）
       run: |
         ls -lha igv-webapp/resource/igv-webapp
-        docker build . --file igv-webapp/Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
+        cd igv-webapp
+        docker build . --file Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
         docker push docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
 
