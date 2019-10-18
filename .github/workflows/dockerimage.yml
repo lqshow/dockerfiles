@@ -5,12 +5,12 @@ on: [push]
 jobs:
 
   build:
- 
+
     runs-on: ubuntu-latest
- 
+
     steps:
     - uses: actions/checkout@master
-      with: 
+      with:
         submodules: true
     - name: CI Docker Login
       run: |
@@ -25,11 +25,16 @@ jobs:
       run: |
         docker build . --file docker-kubectl/Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/docker-kubectl:latest
         docker push docker.pkg.github.com/lqshow/dockerfiles/docker-kubectl:latest
-        
+
     - name: Build the Docker image（igv-webapp）
       run: |
         ls -lha igv-webapp/resource/igv-webapp
         cd igv-webapp
         docker build . --file Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
         docker push docker.pkg.github.com/lqshow/dockerfiles/igv-webapp:0.0.1
+
+    - name: Build the Docker image（helm-kubectl）
+      run: |
+        docker build . --file helm-kubectl/Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/helm-kubectl:2.10.0
+        docker push docker.pkg.github.com/lqshow/dockerfiles/helm-kubectl:2.10.0
 
