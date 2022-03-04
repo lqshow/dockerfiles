@@ -25,6 +25,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     net-tools \
     dnsutils \
     iputils-ping \
+    unzip \
 
     # Clean up
     && apt-get autoremove -y \

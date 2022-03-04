@@ -13,6 +13,7 @@ echo '[STEP 2] Installing Krew'
   tar zxvf "${KREW}.tar.gz" &&
   ./"${KREW}" install krew
 )
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 echo '[STEP 3] Installing kubectx and kubens - quickly switch kubernetes context and namespace'
 (
@@ -53,4 +54,9 @@ echo '[STEP 7] IInstalling kubectl-iexec plugin'
     wget -c  https://github.com/gabeduke/kubectl-iexec/releases/download/${TAG}/kubectl-iexec_${TAG}_${OS:-Linux}_x86_64.tar.gz -O - | tar -xz &&
     chmod +x kubectl-iexec &&
     mv kubectl-iexec /usr/local/bin/
+)
+
+echo '[STEP 8] IInstalling kubectl-sniff plugin'
+(
+    kubectl krew install sniff
 )
