@@ -40,5 +40,5 @@ jobs:
 
     - name: Build the Docker image（kubetools）
       run: |
-        docker build . --file kubetools/Dockerfile --tag docker.pkg.github.com/lqshow/dockerfiles/kubetools:0.0.1
+        cd kubetools && docker build -t docker.pkg.github.com/lqshow/dockerfiles/kubetools:0.0.1 .
         docker push docker.pkg.github.com/lqshow/dockerfiles/kubetools:0.0.1
